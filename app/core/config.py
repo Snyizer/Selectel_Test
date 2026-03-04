@@ -7,11 +7,12 @@ class Settings(BaseSettings):
         env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
+        extra='ignore',
     )
 
     database_url: str = Field(
         "postgresql+asyncpg://postgres:postgres@db:5432/postgres_typo",
-        validation_alias="DATABSE_URL",
+        validation_alias="DATABASE_URL",
     )
     log_level: str = "INFO"
     parse_schedule_minutes: int = 5
