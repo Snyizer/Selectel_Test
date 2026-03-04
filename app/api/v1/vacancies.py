@@ -49,10 +49,7 @@ async def create_vacancy_endpoint(
     if payload.external_id is not None:
         existing = await get_vacancy_by_external_id(session, payload.external_id)
         if existing:
-            return JSONResponse(
-                status_code=status.HTTP_200_OK,
-                content={"detail": "Vacancy with external_id already exists"},
-            )
+            return existing 
     return await create_vacancy(session, payload)
 
 
